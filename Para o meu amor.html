@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>meu nenenzinho 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: 'Press Start 2P', cursive, monospace;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      user-select: none;
+    }
+    #heart {
+      font-size: 80px;
+      color: #ff3b3b;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+      z-index: 10;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+    #continue-message {
+      font-size: 14px;
+      color: #f55;
+      margin-bottom: 10px;
+      display: none;
+      font-weight: bold;
+      text-shadow: 0 0 5px #f55;
+    }
+    #text-container {
+      max-width: 600px;
+      font-size: 14px;
+      line-height: 1.4;
+      background: rgba(255, 0, 0, 0.15);
+      border: 2px solid #f33;
+      border-radius: 12px;
+      padding: 20px;
+      display: none;
+      color: #fff;
+      text-shadow: 0 0 2px black;
+      user-select: text;
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+    #final-message {
+      font-weight: bold;
+      font-size: 16px;
+      color: #ff6666;
+      margin-top: 10px;
+      text-shadow: 0 0 10px #ff6666;
+    }
+    .pixel-supra {
+      position: absolute;
+      width: 48px;
+      height: 24px;
+      image-rendering: pixelated;
+      opacity: 0.6;
+      animation: float 6s ease-in-out infinite;
+      user-select: none;
+      pointer-events: none;
+      filter: drop-shadow(0 0 2px red);
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div id="heart">❤️</div>
+  <div id="continue-message">continue clicando na tela para ver a mágica acontecer</div>
+  <div id="text-container"></div>
+  <div id="final-message"></div>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2023/05/17/audio_3e3c27ba32.mp3" type="audio/mp3" />
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <!-- Pixel art supras -->
+  <img src="https://i.imgur.com/RH5IQXB.png" alt="Pixel Supra" class="pixel-supra" style="top: 10%; left: 5%; animation-delay: 0s;" />
+  <img src="https://i.imgur.com/RH5IQXB.png" alt="Pixel Supra" class="pixel-supra" style="top: 50%; left: 15%; animation-delay: 1.5s;" />
+  <img src="https://i.imgur.com/RH5IQXB.png" alt="Pixel Supra" class="pixel-supra" style="top: 70%; left: 80%; animation-delay: 2.5s;" />
+  <img src="https://i.imgur.com/RH5IQXB.png" alt="Pixel Supra" class="pixel-supra" style="top: 20%; left: 75%; animation-delay: 4s;" />
+  <img src="https://i.imgur.com/RH5IQXB.png" alt="Pixel Supra" class="pixel-supra" style="top: 85%; left: 40%; animation-delay: 3s;" />
+
+  <script>
+    const phrases = [
+      "Eu te amo. E amo esse teu jeito de me provocar de propósito só pra ver minha cara de brava… como se fosse tua forma secreta de dizer “tô pensando em você”.",
+      "I love you. E mesmo nunca tendo te sentido por perto, às vezes juro que teu cheiro aparece aqui… tipo do nada. Ih, quando é assim, como explica?",
+      "Te amo. Porque até teu silêncio na chamada tem presença. E eu escuto ele com carinho.",
+      "Je t’aime. Porque teu sorriso embaçado na câmera já salvou dias meus que você nem sabe.",
+      "Ti amo. E mesmo sem nunca ter encostado em você, tenho certeza que tua mão encaixa direitinho na minha.",
+      "Ich liebe dich. Mesmo quando você solta aquele “cara, só dessa vez” com cara de quem vai aprontar. Eu só suspiro… e amo mesmo assim.",
+      "愛してる. Porque teu “tô aqui” tem gosto de abraço, mesmo quando vem só por texto.",
+      "사랑해. Porque você é meu caos preferido, meu meme favorito, e ainda por cima tem o dom de me fazer rir mesmo de longe.",
+      "我爱你. E às vezes eu paro, penso em como vai ser te ver pela primeira vez… e fico muda. “E o Kiko?”, né? Mas eu sei… vai ser mágico.",
+      "Я тебя люблю. Porque mesmo com toda essa distância, a conexão entre a gente é mais forte do que muita presença por aí.",
+      "أحبك. Porque até seu bom dia pela manhã ilumina todo o resto do meu dia.",
+      "Σ’ αγαπώ. Porque você bagunçou tudo aqui dentro com esse teu jeitinho meio largado, meio “nem aí”… e no fim, é exatamente isso que me prendeu.",
+      "אני אוהב אותך. Porque teu riso atravessa a tela. E se instala no meu dia.",
+      "मैं तुमसे प्यार करता हूँ. Porque se amor à distância é difícil, amar você torna tudo mais leve… e até divertido.",
+      "Seni seviyorum. Porque até tua preguiça de digitar direito me faz sorrir. E sorrir por tua causa virou rotina.",
+      "Jag älskar dig. E quando eu finalmente te ver… ah, quando é assim, o universo vai dar aquele bug gostoso.",
+      "Kocham cię. Porque tuas piadas internas, teu jeitinho de me chamar de chata… isso tudo mora em mim já.",
+      "Te iubesc. Porque mesmo sem nunca ter cruzado contigo no mundo real, eu te reconheci no coração desde o começo.",
+      "ฉันรักคุณ. Porque amar você é isso: esperar, sonhar, rir, reclamar da conexão, e mesmo assim seguir — porque tem algo em ti que me faz ficar."
+    ];
+
+    const heart = document.getElementById("heart");
+    const continueMessage = document.getElementById("continue-message");
+    const textContainer = document.getElementById("text-container");
+    const finalMessage = document.getElementById("final-message");
+
+    let index = 0;
+    let started = false;
+
+    heart.addEventListener("click", () => {
+      heart.style.display = "none";
+      continueMessage.style.display = "block";
+      textContainer.style.display = "block";
+      started = true;
+    });
+
+    document.body.addEventListener("click", (e) => {
+      // evitar clique inicial no coração de novo (já oculto)
+      if (!started) return;
+      // evitar que clique no coração cause duplicata, só contar cliques fora do coração
+      if (e.target === heart) return;
+
+      if (index < phrases.length) {
+        const p = document.createElement("p");
+        p.textContent = phrases[index];
+        textContainer.appendChild(p);
+        p.scrollIntoView({ behavior: "smooth" });
+        index++;
+        if (index === phrases.length) {
+          finalMessage.textContent = "apesar de todas as dificuldades, saiba que eu sempre estarei aqui por vc.";
+        }
+      }
+    });
+  </script>
+</body>
+</html>
